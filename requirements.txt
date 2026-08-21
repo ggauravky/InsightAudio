@@ -14,15 +14,16 @@ torchaudio>=2.2.0                 # Audio utilities for PyTorch
 # ── Translation (Hindi → English) ─────────────────────────────────────────────
 deep-translator>=1.11.4           # Lightweight translation wrapper (Google backend)
 
-# ── LLM Orchestration — LangChain LCEL + Mistral ──────────────────────────────
+# ── LLM Orchestration — LangChain LCEL + Google Gemini ──────────────────────
 langchain>=0.2.0
 langchain-core>=0.2.0
 langchain-community>=0.2.0
-langchain-mistralai>=0.1.0        # LangChain wrapper for Mistral API
-mistralai>=0.4.0                  # Official Mistral Python client
+langchain-google-genai>=1.0.0     # LangChain wrapper for Google Gemini API
+google-genai>=0.1.0               # Official Google GenAI SDK
 
 # ── RAG Pipeline ──────────────────────────────────────────────────────────────
 chromadb>=0.5.0                   # Local vector store
+langchain-chroma>=0.1.4           # LangChain Chroma integration
 sentence-transformers>=3.0.0      # HuggingFace embedding models
 langchain-huggingface>=0.0.3      # LangChain ↔ HuggingFace embeddings bridge
 huggingface-hub>=0.23.0           # Model downloading from HuggingFace Hub

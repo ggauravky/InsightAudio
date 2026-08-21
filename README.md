@@ -11,7 +11,7 @@
 [![Python](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.35+-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![LangChain](https://img.shields.io/badge/LangChain-LCEL-00A67E?style=for-the-badge&logo=chainlink&logoColor=white)](https://www.langchain.com/)
-[![Mistral AI](https://img.shields.io/badge/Mistral%20AI-Free%20API-FF7000?style=for-the-badge&logo=openai&logoColor=white)](https://mistral.ai/)
+[![Google Gemini](https://img.shields.io/badge/Google%20Gemini-1.5%20Flash-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
 [![Whisper](https://img.shields.io/badge/OpenAI%20Whisper-Local%20STT-412991?style=for-the-badge&logo=openai&logoColor=white)](https://github.com/openai/whisper)
 [![ChromaDB](https://img.shields.io/badge/ChromaDB-Vector%20Store-E0234E?style=for-the-badge&logo=databricks&logoColor=white)](https://www.trychroma.com/)
 [![Status](https://img.shields.io/badge/Status-Active%20%26%20Production%20Ready-00C853?style=for-the-badge&logo=checkmarx&logoColor=white)](#)
@@ -38,7 +38,7 @@
 
 Modern knowledge workers and engineering teams spend hundreds of hours in virtual meetings, lectures, and video presentations. Existing commercial transcription tools charge steep monthly subscriptions ($20–$50/seat/month), enforce strict recording caps, compromise data privacy by sending proprietary meetings to third-party clouds, and struggle heavily with regional dialects such as **Hindi and Hinglish**.
 
-**InsightAudio** is a free, open-source, production-ready AI Meeting Assistant engineered entirely in Python. It provides an end-to-end pipeline that ingests any YouTube video or local media file (audio/video), performs high-fidelity speech-to-text with bilingual routing (Whisper for English & Sarvam AI for Hindi/Hinglish), synthesizes comprehensive structured intelligence using Mistral AI, indexes embeddings in ChromaDB, and delivers an interactive Streamlit dashboard with a citation-backed conversational RAG chat engine.
+**InsightAudio** is a free, open-source, production-ready AI Meeting Assistant engineered entirely in Python. It provides an end-to-end pipeline that ingests any YouTube video or local media file (audio/video), performs high-fidelity speech-to-text with bilingual routing (Whisper for English & Sarvam AI for Hindi/Hinglish), synthesizes comprehensive structured intelligence using **Google Gemini**, indexes embeddings in ChromaDB, and delivers an interactive Streamlit dashboard with a citation-backed conversational RAG chat engine.
 
 ---
 
