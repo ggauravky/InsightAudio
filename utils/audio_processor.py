@@ -7,14 +7,18 @@ os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
 
 def download_youtube_audio(url: str) -> str:
-    output_path = os.path.join(DOWNLOAD_DIR, "%(title)s.%(ext)s")
+    output_path = os.path.join(DOWNLOAD_DIR, "%(id)s.%(ext)s")
+    
+    cookies_file = os.getenv("YOUTUBE_COOKIES_FILE")
+    if not cookies_file and os.path.exists("cookies.txt"):
+        cookies_file = "cookies.txt"
+
     ydl_opts = {
         "format": "bestaudio/best",
         "outtmpl": output_path,
-        "js_runtimes": {"node": {}},
         "extractor_args": {
             "youtube": {
-                "player_client": ["web_embedded"],
+                "player_client": ["android", "ios", "mweb", "web"],
             }
         },
         "postprocessors": [
@@ -25,11 +29,19 @@ def download_youtube_audio(url: str) -> str:
             }
         ],
         "quiet": True,
+        "no_warnings": True,
     }
+
+    if cookies_file and os.path.exists(cookies_file):
+        ydl_opts["cookiefile"] = cookies_file
+
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=True)
         filename = (
-            ydl.prepare_filename(info).replace(".webm", ".wav").replace(".m4a", ".wav")
+            ydl.prepare_filename(info)
+            .replace(".webm", ".wav")
+            .replace(".m4a", ".wav")
+            .replace(".mp4", ".wav")
         )
     return filename
 
