@@ -13,14 +13,11 @@ def download_youtube_audio(url: str) -> str:
     if not cookies_file and os.path.exists("cookies.txt"):
         cookies_file = "cookies.txt"
 
-    ydl_opts = {
-        "format": "bestaudio/best",
+    base_opts = {
+        "format": "ba/18/b",
         "outtmpl": output_path,
-        "extractor_args": {
-            "youtube": {
-                "player_client": ["android", "ios", "mweb", "web"],
-            }
-        },
+        "nocheckcertificate": True,
+        "geo_bypass": True,
         "postprocessors": [
             {
                 "key": "FFmpegExtractAudio",
@@ -33,17 +30,37 @@ def download_youtube_audio(url: str) -> str:
     }
 
     if cookies_file and os.path.exists(cookies_file):
-        ydl_opts["cookiefile"] = cookies_file
+        base_opts["cookiefile"] = cookies_file
 
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        info = ydl.extract_info(url, download=True)
-        filename = (
-            ydl.prepare_filename(info)
-            .replace(".webm", ".wav")
-            .replace(".m4a", ".wav")
-            .replace(".mp4", ".wav")
-        )
-    return filename
+    client_strategies = [
+        ["web_safari", "android", "web"],
+        ["android", "mweb"],
+        ["web", "android"],
+    ]
+
+    last_error = None
+    for clients in client_strategies:
+        try:
+            ydl_opts = dict(base_opts)
+            ydl_opts["extractor_args"] = {
+                "youtube": {
+                    "player_client": clients,
+                }
+            }
+            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                info = ydl.extract_info(url, download=True)
+                filename = (
+                    ydl.prepare_filename(info)
+                    .replace(".webm", ".wav")
+                    .replace(".m4a", ".wav")
+                    .replace(".mp4", ".wav")
+                )
+                return filename
+        except Exception as e:
+            last_error = e
+            continue
+
+    raise last_error or RuntimeError("Failed to download YouTube audio.")
 
 
 def convert_to_wav(input_path: str) -> str:
