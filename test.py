@@ -1,4 +1,4 @@
-from utils.audioProcessor import process_input
+from utils.audio_processor import process_input
 from core.transcriber import transcribe_all
 
 source="https://youtu.be/YtnigjSD2BU?si=sxAIJgIq_9jBUEbk"
