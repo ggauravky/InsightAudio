@@ -25,6 +25,8 @@ exports/*
 # Vector Database storage
 data/
 data/chromadb/
+vector_db/
+vector_db/*
 *.chroma
 
 # OS metadata

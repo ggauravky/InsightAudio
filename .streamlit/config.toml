@@ -1,6 +1,11 @@
 [server]
+headless = true
+enableCORS = false
+enableXsrfProtection = false
 fileWatcherType = "none"
-headless = false
+
+[browser]
+gatherUsageStats = false
 
 [theme]
 base = "dark"
